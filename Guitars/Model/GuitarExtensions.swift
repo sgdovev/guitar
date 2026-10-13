@@ -6,7 +6,7 @@
 import Foundation
 
 nonisolated extension Acoustic {
-    static let standard = Acoustic(topWood: .mahogany, backAndSidesWood: .rosewood)
+    static let standard = Acoustic(topWood: .spruceSitka, backAndSidesWood: .rosewood)
 }
 
 nonisolated extension Electric {

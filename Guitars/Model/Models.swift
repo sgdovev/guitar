@@ -88,6 +88,8 @@ nonisolated enum Wood: String, Codable, CaseIterable {
     case poplar = "Poplar"
     case rosewood = "Rosewood"
     case richlite = "Richlite"
+    case spruceSitka = "Sitka Spruce"
+    case spruceAdirondack = "Adirondack Spruce"
 }
 
 nonisolated enum GuitarType: String, Codable, CaseIterable {
