@@ -13,6 +13,7 @@ struct GuitarDraft {
     var modelYear: Int
     var serialNumber: String
     var brand: Brand
+    var finish: String
     var neckWood: Wood
     var fretboardWood: Wood
     var acoustic: Acoustic?
@@ -28,6 +29,7 @@ struct GuitarDraft {
         modelYear = source.modelYear
         serialNumber = source.serialNumber
         brand = source.brand
+        finish = source.finish
         neckWood = source.neckWood
         fretboardWood = source.fretboardWood
         acoustic = source.acoustic
@@ -43,6 +45,7 @@ struct GuitarDraft {
         guitar.modelYear = modelYear
         guitar.serialNumber = serialNumber.trimmingCharacters(in: .whitespacesAndNewlines)
         guitar.brand = brand
+        guitar.finish = finish.trimmingCharacters(in: .whitespacesAndNewlines)
         guitar.neckWood = neckWood
         guitar.fretboardWood = fretboardWood
         guitar.acoustic = acoustic

@@ -35,6 +35,7 @@ struct GuitarEditorView: View {
                     TextField("Model", text: $draft.modelName)
                     TextField("Year", value: $draft.modelYear, format: .number.grouping(.never))
                     TextField("Serial Number", text: $draft.serialNumber)
+                    TextField("Finish", text: $draft.finish)
                 }
 
                 Section("Construction") {

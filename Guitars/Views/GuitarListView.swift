@@ -75,7 +75,7 @@ struct GuitarListView: View {
         guitars.filter { guitar in
             guard filter.matches(guitar) else { return false }
             guard !searchText.isEmpty else { return true }
-            return [guitar.displayName, guitar.serialNumber, String(guitar.modelYear)]
+            return [guitar.displayName, guitar.serialNumber, guitar.finish, String(guitar.modelYear)]
                 .contains { $0.localizedStandardContains(searchText) }
         }
     }

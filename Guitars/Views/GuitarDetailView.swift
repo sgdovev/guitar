@@ -92,6 +92,7 @@ struct GuitarSpecs: View {
             LabeledContent("Year", value: String(guitar.modelYear))
             LabeledContent("Type", value: guitar.guitarType.rawValue)
             LabeledContent("Serial Number", value: guitar.serialNumber)
+            LabeledContent("Finish", value: guitar.finish)
         }
         Section("Construction") {
             LabeledContent("Neck", value: guitar.neckWood.rawValue)

@@ -41,6 +41,7 @@ nonisolated struct GuitarRecord: Codable {
     var modelYear: Int
     var serialNumber: String
     var brand: Brand
+    var finish: String
     var neckWood: Wood
     var fretboardWood: Wood
     var acoustic: Acoustic?
@@ -58,6 +59,7 @@ nonisolated struct GuitarRecord: Codable {
         modelYear = guitar.modelYear
         serialNumber = guitar.serialNumber
         brand = guitar.brand
+        finish = guitar.finish
         neckWood = guitar.neckWood
         fretboardWood = guitar.fretboardWood
         acoustic = guitar.acoustic
@@ -77,6 +79,7 @@ nonisolated struct GuitarRecord: Codable {
         guitar.modelYear = modelYear
         guitar.serialNumber = serialNumber
         guitar.brand = brand
+        guitar.finish = finish
         guitar.neckWood = neckWood
         guitar.fretboardWood = fretboardWood
         guitar.acoustic = acoustic

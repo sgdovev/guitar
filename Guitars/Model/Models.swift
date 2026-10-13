@@ -18,6 +18,7 @@ final class Guitar {
     var modelYear: Int
     var serialNumber: String
     var brand: Brand
+    var finish: String = ""
     var neckWood: Wood
     var fretboardWood: Wood
     var acoustic: Acoustic?
@@ -36,6 +37,7 @@ final class Guitar {
         modelYear: Int = Calendar.current.component(.year, from: .now),
         serialNumber: String = "",
         brand: Brand = .gibson,
+        finish: String = "",
         neckWood: Wood = .mahogany,
         fretboardWood: Wood = .rosewood,
         acoustic: Acoustic? = nil,
@@ -51,6 +53,7 @@ final class Guitar {
         self.modelYear = modelYear
         self.serialNumber = serialNumber
         self.brand = brand
+        self.finish = finish
         self.neckWood = neckWood
         self.fretboardWood = fretboardWood
         self.acoustic = acoustic
