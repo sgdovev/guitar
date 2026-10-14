@@ -66,6 +66,7 @@ struct GuitarEditorView: View {
                 }
 
                 Section("Photos") {
+                    PhotoAccessNotice()
                     if !draft.images.isEmpty {
                         photoStrip
                     }

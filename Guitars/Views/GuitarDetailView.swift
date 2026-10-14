@@ -78,6 +78,10 @@ struct PhotoGallery: View {
             .scrollIndicators(.hidden)
             .scrollPosition(id: $currentID)
             .onAppear { currentID = startAt ?? images.first?.id }
+            .safeAreaInset(edge: .bottom) {
+                PhotoAccessNotice()
+                    .padding(.horizontal)
+            }
         }
     }
 }

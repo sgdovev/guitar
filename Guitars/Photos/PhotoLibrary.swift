@@ -10,6 +10,22 @@ import Foundation
 import Photos
 
 nonisolated enum PhotoLibrary {
+    /// How much of the library the app can read. With limited access, photos
+    /// chosen in the picker are NOT added to the allowed set, so their
+    /// identifiers can't be loaded. The app needs full access to show them.
+    enum Access {
+        case full, limited, denied, notDetermined
+    }
+
+    static var access: Access {
+        switch PHPhotoLibrary.authorizationStatus(for: .readWrite) {
+        case .authorized: .full
+        case .limited: .limited
+        case .notDetermined: .notDetermined
+        default: .denied
+        }
+    }
+
     /// Asks for read/write access the first time; later calls just return the status.
     @discardableResult
     static func requestAccess() async -> PHAuthorizationStatus {

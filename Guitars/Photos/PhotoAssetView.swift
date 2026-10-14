@@ -13,8 +13,11 @@ struct PhotoAssetView: View {
     var targetSize = CGSize(width: 400, height: 400)
 
     @Environment(\.displayScale) private var displayScale
+    @Environment(\.scenePhase) private var scenePhase
     @State private var loaded: PlatformImage?
     @State private var isMissing = false
+    /// Bumped to retry, e.g. after the user grants Full Access in Settings.
+    @State private var attempt = 0
 
     var body: some View {
         ZStack {
@@ -29,7 +32,9 @@ struct PhotoAssetView: View {
                 ContentUnavailableView {
                     Label("Photo Unavailable", systemImage: "photo.badge.exclamationmark")
                 } description: {
-                    Text("This photo isn't in this device's Photos library.")
+                    Text(PhotoLibrary.access == .full
+                         ? "This photo isn't in this device's Photos library."
+                         : "Guitars needs Full Access to your Photos library to show this photo.")
                 }
                 .font(.caption)
             } else {
@@ -38,7 +43,7 @@ struct PhotoAssetView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.quaternary)
-        .task(id: image) {
+        .task(id: LoadKey(image: image, attempt: attempt)) {
             loaded = nil
             isMissing = false
             await PhotoLibrary.requestAccess()
@@ -46,5 +51,13 @@ struct PhotoAssetView: View {
             loaded = await PhotoLibrary.image(for: image, targetSize: pixels)
             isMissing = loaded == nil
         }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active && isMissing { attempt += 1 }
+        }
     }
+}
+
+private struct LoadKey: Equatable {
+    let image: GuitarImage
+    let attempt: Int
 }
